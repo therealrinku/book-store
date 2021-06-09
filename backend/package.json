@@ -1,0 +1,15 @@
+{
+  "name": "book-store-backend",
+  "version": "1.0.0",
+  "description": "book store app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/therealrinku/book-store"
+  },
+  "author": "Rinku Chaudhari",
+  "license": "ISC"
+}

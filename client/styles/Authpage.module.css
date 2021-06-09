@@ -1,0 +1,66 @@
+.authpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 35px;
+}
+
+.authpage span {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+}
+
+.authpage a {
+  margin-left: 4px;
+}
+
+.authpage h2 {
+  line-height: 1.5em;
+}
+
+.authpage form {
+  display: flex;
+  flex-direction: column;
+  width: 45vw;
+  margin: auto;
+  margin-top: 25px;
+}
+
+.authpage label {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.authpage input,
+.authpage button {
+  border-radius: 10px;
+  border: solid 1px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  outline: none;
+  height: 50px;
+  background: inherit;
+}
+
+.authpage input {
+  margin-bottom: 20px;
+}
+
+.authpage input:focus {
+  box-shadow: 0 0 2pt 2pt #b4e6dc;
+}
+
+.authpage form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: rgb(31, 30, 30);
+  color: white;
+  font-size: 17px;
+}
+
+.authpage form button:hover {
+  background: black;
+}
