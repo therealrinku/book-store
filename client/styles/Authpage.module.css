@@ -64,3 +64,9 @@
 .authpage form button:hover {
   background: black;
 }
+
+@media (max-width: 750px) {
+  .authpage form {
+    width: 90vw;
+  }
+}
