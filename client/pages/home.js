@@ -36,18 +36,22 @@ export default function HomePage() {
     },
   ];
 
+  const toggleBookForm = () => {
+    setShowBookForm((prev) => !prev);
+  };
+
   return (
     <div className={styles.homepage}>
       <p style={{ textAlign: "center", fontSize: "25px" }}>All Books</p>
 
       {showBookForm ? (
         <>
-          <Backdrop />
+          <Backdrop toggle={toggleBookForm} />
           <BookForm />
         </>
       ) : null}
 
-      <button onClick={() => setShowBookForm((prev) => !prev)} className={styles.AddBookButton}>
+      <button onClick={toggleBookForm} className={styles.AddBookButton}>
         Add New Book
       </button>
 
