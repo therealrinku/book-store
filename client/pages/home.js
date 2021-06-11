@@ -34,6 +34,9 @@ export default function HomePage() {
   return (
     <div className={styles.homepage}>
       <p style={{ textAlign: "center", fontSize: "25px" }}>All Books</p>
+
+      <button className={styles.AddBookButton}>Add New Book</button>
+
       <section className={styles.books}>
         {books.map((book, i) => {
           return (

@@ -29,6 +29,20 @@
   }
 }
 
+.AddBookButton {
+  border: none;
+  background: coral;
+  outline: none;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 49.5vw;
+  transform: translate(-50%, -50%);
+}
+
+.AddBookButton:hover {
+  background: rgb(231, 125, 87);
+}
+
 @media (max-width: 700px) {
   .books {
     grid-template-columns: 1fr;
