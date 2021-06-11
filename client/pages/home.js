@@ -1,7 +1,11 @@
 import styles from "../styles/Homepage.module.css";
 import Link from "next/link";
+import { useState } from "react";
+import BookForm from "../components/BookForm";
 
 export default function HomePage() {
+  const [showBookForm, setShowBookForm] = useState(false);
+
   const books = [
     {
       bookId: 1,
@@ -35,7 +39,11 @@ export default function HomePage() {
     <div className={styles.homepage}>
       <p style={{ textAlign: "center", fontSize: "25px" }}>All Books</p>
 
-      <button className={styles.AddBookButton}>Add New Book</button>
+      {showBookForm ? <BookForm /> : null}
+
+      <button onClick={() => setShowBookForm((prev) => !prev)} className={styles.AddBookButton}>
+        Add New Book
+      </button>
 
       <section className={styles.books}>
         {books.map((book, i) => {
