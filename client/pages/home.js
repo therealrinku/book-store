@@ -37,12 +37,12 @@ export default function HomePage() {
       <section className={styles.books}>
         {books.map((book, i) => {
           return (
-            <Link href={`/book/${book.bookId}`} key={i}>
-              <div>
+            <div key={i}>
+              <Link href={`/book/${book.bookId}`}>
                 <img src={book.bookImage} alt={book.bookName} />
-                <p>{book.bookName}</p>
-              </div>
-            </Link>
+              </Link>
+              <p>{book.bookName}</p>
+            </div>
           );
         })}
       </section>
