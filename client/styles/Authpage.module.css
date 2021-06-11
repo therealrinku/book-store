@@ -35,7 +35,6 @@
 
 .authpage input,
 .authpage button {
-  border-radius: 10px;
   border: solid 1px rgba(0, 0, 0, 0.3);
   padding: 10px;
   outline: none;
@@ -48,7 +47,7 @@
 }
 
 .authpage input:focus {
-  box-shadow: 0 0 2pt 2pt #b4e6dc;
+  box-shadow: 0 0 2pt 2pt #d9e9e6;
 }
 
 .authpage form button {
@@ -56,13 +55,13 @@
   align-items: center;
   justify-content: center;
   border: none;
-  background: rgb(31, 30, 30);
+  background: coral;
   color: white;
   font-size: 17px;
 }
 
 .authpage form button:hover {
-  background: black;
+  background: rgb(211, 90, 46);
 }
 
 @media (max-width: 750px) {
