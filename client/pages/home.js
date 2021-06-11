@@ -2,6 +2,7 @@ import styles from "../styles/Homepage.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import BookForm from "../components/BookForm";
+import Backdrop from "../components/Backdrop";
 
 export default function HomePage() {
   const [showBookForm, setShowBookForm] = useState(false);
@@ -39,7 +40,12 @@ export default function HomePage() {
     <div className={styles.homepage}>
       <p style={{ textAlign: "center", fontSize: "25px" }}>All Books</p>
 
-      {showBookForm ? <BookForm /> : null}
+      {showBookForm ? (
+        <>
+          <Backdrop />
+          <BookForm />
+        </>
+      ) : null}
 
       <button onClick={() => setShowBookForm((prev) => !prev)} className={styles.AddBookButton}>
         Add New Book
