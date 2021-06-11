@@ -1,0 +1,13 @@
+.GoBackButton {
+  position: fixed;
+  top: 4vh;
+  left: 5vw;
+  background: black;
+  color: white;
+  border: solid 1px black;
+  padding: 10px 20px;
+}
+
+.GoBackButton:hover {
+  background: rgb(105, 105, 105);
+}

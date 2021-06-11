@@ -1,8 +1,11 @@
+import GoBackButton from "../../components/GoBackButton";
 import styles from "../../styles/Bookdetail.module.css";
 
 export default function BookDetails() {
   return (
     <div className={styles.bookDetails}>
+      <GoBackButton />
+
       <p style={{ textAlign: "center", fontSize: "25px" }}>Book Details</p>
 
       <section>
