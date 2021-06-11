@@ -6,7 +6,7 @@ export default function BookForm({ toggle }) {
       <form>
         <input type="text" placeholder="Type book title here" />
         <input type="text" placeholder="Type book author here" />
-        <input type="text" placeholder="Type book published date here" />
+        <input type="date" placeholder="Type book published date here" />
         <input type="text" placeholder="Type book details here" />
         <input type="text" placeholder="Type book image url here" />
         <input type="text" placeholder="Type book price here" />
