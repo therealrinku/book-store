@@ -1,22 +1,22 @@
-.homepage {
+.landingPage {
   display: flex;
   min-height: 100vh;
 }
 
-.homepage img,
-.homepage section {
+.landingPage img,
+.landingPage section {
   width: 50%;
   height: inherit;
 }
 
-.homepage section {
+.landingPage section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.homepage button {
+.landingPage button {
   padding: 15px 30px;
   border-radius: 50px;
   border: none;
@@ -24,21 +24,21 @@
   color: white;
 }
 
-.homepage button:hover {
+.landingPage button:hover {
   background: #42a18e;
 }
 
 @media (max-width: 700px) {
-  .homepage {
+  .landingPage {
     flex-direction: column;
   }
 
-  .homepage img,
-  .homepage section {
+  .landingPage img,
+  .landingPage section {
     width: 100%;
   }
 
-  .homepage section {
+  .landingPage section {
     margin: 30px 0;
   }
 }
