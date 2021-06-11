@@ -1,9 +1,10 @@
 .bookDetails section {
   display: flex;
   align-items: flex-start;
-  width: 95%;
+  justify-content: space-between;
+  width: 90%;
   margin: auto;
-  margin: 30px auto;
+  margin: 35px auto;
 }
 
 .bookDetails img,
@@ -12,9 +13,8 @@
 }
 
 .bookDetails img {
-  border-radius: 10px;
-  display: block;
-  margin: auto;
+  width: 300px;
+  height: 450px;
   object-fit: cover;
 }
 
@@ -28,13 +28,13 @@
 .bookTitle {
   font-size: 20px;
   border-bottom: solid 1px black;
-  width: 95%;
+  width: 100%;
   text-align: center;
 }
 
 .bookDetails span {
   display: flex;
-  width: 95%;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -47,6 +47,11 @@
   .bookDetails img,
   .bookDetails div {
     width: 95%;
+  }
+
+  .bookDetails img {
+    height: auto;
+    margin: auto;
   }
 
   .bookDetails div {
