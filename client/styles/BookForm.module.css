@@ -7,4 +7,29 @@
   border: solid 1px black;
   padding: 20px;
   z-index: 4;
+  width: 50vw;
+}
+
+.BookForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.BookForm input,
+.BookForm button {
+  border: solid 1px black;
+  margin-bottom: 10px;
+  padding: 10px;
+  outline: none;
+}
+
+.BookForm button {
+  background: black;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .BookForm {
+    width: 90vw;
+  }
 }

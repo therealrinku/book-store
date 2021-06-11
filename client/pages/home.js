@@ -47,7 +47,7 @@ export default function HomePage() {
       {showBookForm ? (
         <>
           <Backdrop toggle={toggleBookForm} />
-          <BookForm />
+          <BookForm toggle={toggleBookForm} />
         </>
       ) : null}
 

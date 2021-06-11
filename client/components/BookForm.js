@@ -1,6 +1,6 @@
 import styles from "../styles/BookForm.module.css";
 
-export default function BookForm() {
+export default function BookForm({ toggle }) {
   return (
     <div className={styles.BookForm}>
       <form>
@@ -9,6 +9,10 @@ export default function BookForm() {
         <input type="text" placeholder="Type book published date here" />
         <input type="text" placeholder="Type book details here" />
         <input type="text" placeholder="Type book image url here" />
+        <button>Submit</button>
+        <button onClick={toggle} type="button">
+          Cancel
+        </button>
       </form>
     </div>
   );
