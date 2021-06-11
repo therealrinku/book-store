@@ -1,0 +1,20 @@
+.books {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 95%;
+  margin: auto;
+  margin-top: 60px;
+}
+
+.books div {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.books img {
+  width: 50%;
+  border-radius: 8px;
+  height: 300px;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+}
