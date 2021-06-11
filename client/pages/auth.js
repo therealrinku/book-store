@@ -30,9 +30,11 @@ export default function auth() {
         </button>
       </form>
 
-      <p style={{ margin: "25px 0 -10px 0", color: "gray" }}>Already have an account?</p>
+      <p style={{ margin: "25px 0 -10px 0", color: "gray" }}>
+        {!loginMode ? "Already have an account?" : "Don't have an account?"}
+      </p>
       <button style={{ border: "none" }} onClick={() => setLoginMode((prev) => !prev)}>
-        {!loginMode ? "Login" : "Signup"} to BookStore
+        {loginMode ? "Signup" : "Login"} to BookStore
       </button>
     </div>
   );
