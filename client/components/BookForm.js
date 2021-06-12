@@ -22,9 +22,12 @@ export default function BookForm({ toggle, editMode }) {
         price,
         details,
       })
-      .then((res) => {
+      .then(() => {
         alert("Success");
         window.location.reload();
+      })
+      .catch((err) => {
+        alert("input fields cannot be empty :" + err);
       });
   };
 
