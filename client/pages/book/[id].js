@@ -22,6 +22,20 @@ export default function BookDetails({ bookId }) {
       });
   }, []);
 
+  const DeleteBook = () => {
+    const deleteBook = confirm("Do you want to delete this book?");
+    if (deleteBook) {
+      axios
+        .post(apiUrl + `/book/delete/${bookId}`)
+        .then((res) => {
+          router.back();
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+  };
+
   return (
     <>
       {loading ? (
@@ -59,7 +73,7 @@ export default function BookDetails({ bookId }) {
                   <p>Edit</p>
                 </button>
 
-                <button>
+                <button onClick={DeleteBook}>
                   <RiDeleteBin5Line />
                   <p>Delete</p>
                 </button>

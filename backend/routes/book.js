@@ -30,8 +30,8 @@ router.get("/:id", (req, res) => {
 
 router.post("/delete/:id", async (req, res) => {
   Book.findByIdAndDelete(req.params.id, (err) => {
-    if (!err) return res.send(200).send("Successfully delete the book.");
-    else res.send(400).send("Something went wrong.");
+    if (!err) return res.status(200).send("Successfully delete the book.");
+    else res.status(400).send("Something went wrong.");
   });
 });
 
