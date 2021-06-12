@@ -44,6 +44,7 @@ export default function BookForm({ toggle, editMode, bookDetails, setBooks }) {
       })
       .then((res) => {
         toggle();
+        //adding book to local state
         setBooks((prev) => [...prev, { _id: res.data.id, title, author, publishedDate, price, imageURL, details }]);
       })
       .catch((err) => {
