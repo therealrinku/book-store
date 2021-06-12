@@ -40,7 +40,7 @@ export default function Users() {
       ) : (
         <div className={styles.usersPage}>
           <GoBackButton />
-          <p style={{ textAlign: "center" }}>Users List</p>
+          <p style={{ textAlign: "center", marginBottom: "30px", fontSize: "25px" }}>Users List</p>
           {users.map((user) => {
             return (
               <section key={user.email}>
