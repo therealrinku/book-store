@@ -5,10 +5,12 @@ import axios from "axios";
 import apiUrl from "../../apiUrl";
 import LoadingView from "../../components/LoadingView";
 import { RiDeleteBin5Line, RiPencilLine } from "react-icons/ri";
+import { useRouter } from "next/router";
 
 export default function BookDetails({ bookId }) {
   const [bookDetails, setBookDetails] = useState({});
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     axios
