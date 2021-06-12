@@ -37,7 +37,9 @@ export default function HomePage() {
         <LoadingView />
       ) : (
         <div className={styles.homepage}>
-          <p style={{ textAlign: "center", fontSize: "25px" }}>All Books</p>
+          <p style={{ textAlign: "center", fontSize: "25px" }}>
+            {books.length === 0 ? "No any Books Added Yet" : "All Books"}
+          </p>
 
           {showBookForm ? (
             <>
