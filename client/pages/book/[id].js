@@ -18,9 +18,10 @@ export default function BookDetails({ bookId }) {
       })
       .catch((err) => {
         setLoading(false);
-        alert(err.message);
       });
   }, []);
+
+  // const parsedPublishedDate = new Date(bookDetails.publishedDate);
 
   return (
     <>
@@ -56,10 +57,10 @@ export default function BookDetails({ bookId }) {
           </section>
         </div>
       ) : (
-        <>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh" }}>
           <GoBackButton />
-          <p style={{ textAlign: "center" }}>Book not found!</p>
-        </>
+          <p style={{ textAlign: "center" }}>Book not found or something went wrong!</p>
+        </div>
       )}
     </>
   );
