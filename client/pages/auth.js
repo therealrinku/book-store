@@ -43,6 +43,7 @@ export default function auth() {
     axios
       .post(apiUrl + "/auth/login", { email, password })
       .then((res) => {
+        console.log(res.data);
         //storing access token and email in state
       })
       .catch((err) => {

@@ -64,6 +64,11 @@
   background: rgb(211, 90, 46);
 }
 
+.authpage form button:disabled:hover {
+  background: coral;
+  cursor: unset;
+}
+
 @media (max-width: 750px) {
   .authpage form {
     width: 90vw;

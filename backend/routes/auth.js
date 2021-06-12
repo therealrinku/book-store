@@ -23,19 +23,18 @@ router.post("/register", (req, res) => {
 
 router.post("/login", async (req, res) => {
   const userObject = await User.findOne({ email: req.body.email });
+
+  if (!userObject) return res.status(400).send("invalid email");
+
   const { email, password } = userObject;
+  //decrypting and comparing the passwords
+  bcrypt.compare(req.body.password, password, (err, matched) => {
+    if (err) return res.status(400).send(err);
+    if (!matched) return res.status(400).send("invalid password");
 
-  if (userObject) {
-    //decrypting and comparing the passwords
-    bcrypt.compare(req.body.password, password, (err, result) => {
-      if (err) return res.status(400).send(err);
-
-      const token = jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET);
-      return res.status(200).send({ token, email });
-    });
-  } else {
-    return res.status(400).send("invalid email");
-  }
+    const token = jwt.sign({ email }, process.env.ACCESS_TOKEN_SECRET);
+    return res.status(200).send({ token, email });
+  });
 });
 
 module.exports = router;
