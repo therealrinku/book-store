@@ -48,7 +48,7 @@ export default function BookDetails({ bookId }) {
       {showUpdateBox ? (
         <>
           <Backdrop toggle={toggleEditBox} />
-          <BookForm editMode={true} bookDetails={bookDetails} toggle={toggleEditBox} />
+          <BookForm editMode={true} bookDetails={bookDetails} toggle={toggleEditBox} setBookDetails={setBookDetails} />
         </>
       ) : null}
       {loading ? (
@@ -69,8 +69,8 @@ export default function BookDetails({ bookId }) {
               </span>
 
               <span>
-                <p>Published Date</p>
-                <p>{bookDetails.publishedDate}</p>
+                <p>Published Year</p>
+                <p>{bookDetails.publishedYear}</p>
               </span>
 
               <span>

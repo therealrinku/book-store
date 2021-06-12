@@ -3,10 +3,10 @@ import { useState } from "react";
 import apiUrl from "../apiUrl";
 import styles from "../styles/BookForm.module.css";
 
-export default function BookForm({ toggle, editMode, bookDetails, setBooks }) {
+export default function BookForm({ toggle, editMode, bookDetails, setBooks, setBookDetails }) {
   const [title, setTitle] = useState(editMode ? bookDetails.title : "");
   const [author, setAuthor] = useState(editMode ? bookDetails.author : "");
-  const [publishedDate, setPublishedDate] = useState(editMode ? bookDetails.publishedDate : "");
+  const [publishedYear, setPublishedYear] = useState("");
   const [imageURL, setImageURL] = useState(editMode ? bookDetails.imageURL : "");
   const [price, setPrice] = useState(editMode ? bookDetails.price : "");
   const [details, setDetails] = useState(editMode ? bookDetails.details : "");
@@ -17,14 +17,15 @@ export default function BookForm({ toggle, editMode, bookDetails, setBooks }) {
       .post(apiUrl + `/book/updateBook/${bookDetails._id}`, {
         title,
         author,
-        publishedDate,
+        publishedYear,
         imageURL,
         price,
         details,
       })
       .then(() => {
-        alert("Success");
-        window.location.reload();
+        //updating in local state as well
+        toggle();
+        setBookDetails({ title, author, publishedYear, imageURL, price, details });
       })
       .catch((err) => {
         alert("input fields cannot be empty :" + err);
@@ -37,7 +38,7 @@ export default function BookForm({ toggle, editMode, bookDetails, setBooks }) {
       .post(apiUrl + "/book/addBook", {
         title,
         author,
-        publishedDate,
+        publishedYear,
         imageURL,
         price,
         details,
@@ -45,7 +46,7 @@ export default function BookForm({ toggle, editMode, bookDetails, setBooks }) {
       .then((res) => {
         toggle();
         //adding book to local state
-        setBooks((prev) => [...prev, { _id: res.data.id, title, author, publishedDate, price, imageURL, details }]);
+        setBooks((prev) => [...prev, { _id: res.data.id, title, author, publishedYear, price, imageURL, details }]);
       })
       .catch((err) => {
         alert("input fields cannot be empty :" + err);
@@ -69,10 +70,10 @@ export default function BookForm({ toggle, editMode, bookDetails, setBooks }) {
           onChange={(e) => setAuthor(e.target.value)}
         />
         <input
-          type="date"
+          type="number"
           placeholder="Type book published date here"
-          value={publishedDate}
-          onChange={(e) => setPublishedDate(e.target.value)}
+          value={publishedYear}
+          onChange={(e) => setPublishedYear(e.target.value)}
         />
         <input
           type="text"
