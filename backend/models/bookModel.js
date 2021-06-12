@@ -7,7 +7,7 @@ const bookSchema = new mongoose.Schema(
     author: { type: String, required: true, null: false },
     details: { type: String, required: true, null: false },
     imageURL: { type: String, required: true, null: false },
-    publishedDate: { type: Date, required: true, null: false },
+    publishedYear: { type: Number, required: true, null: false },
   },
   {
     timestamps: true,

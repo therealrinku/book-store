@@ -5,12 +5,12 @@ require("dotenv").config();
 
 router.get("/all", async (req, res) => {
   const books = await Book.find();
+  console.log(books);
   res.status(200).send(books);
 });
 
 router.post("/updateBook/:id", (req, res) => {
-  const { title, price, author, details, imageURL } = req.body;
-  const publishedDate = Date.parse(req.body.publishedDate);
+  const { title, price, author, details, imageURL, publishedYear } = req.body;
 
   Book.findOneAndUpdate(
     { _id: req.params.id },
@@ -20,7 +20,7 @@ router.post("/updateBook/:id", (req, res) => {
       author,
       details,
       imageURL,
-      publishedDate,
+      publishedYear,
     },
     (err) => {
       if (err) return res.send(400).send(err);
@@ -30,9 +30,8 @@ router.post("/updateBook/:id", (req, res) => {
 });
 
 router.post("/addBook", (req, res) => {
-  const { title, price, author, details, imageURL } = req.body;
-  const publishedDate = Date.parse(req.body.publishedDate);
-  const newBook = new Book({ title, price, author, details, imageURL, publishedDate });
+  const { title, price, author, details, imageURL, publishedYear } = req.body;
+  const newBook = new Book({ title, price, author, details, imageURL, publishedYear });
 
   newBook
     .save()
@@ -40,7 +39,7 @@ router.post("/addBook", (req, res) => {
       res.status(200).send({ id: data._id });
     })
     .catch((err) => {
-      res.send(400).send(err);
+      res.status(400).send(err);
     });
 });
 
