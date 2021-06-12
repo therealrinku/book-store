@@ -4,6 +4,18 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+router.post("/toggleAdminStatus/:id", (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { $set: { isAdmin: req.body.isAdmin } }, (err) => {
+    if (err) return res.send(400).send(err);
+    res.status(200).send("Successfully updated the user");
+  });
+});
+
+router.get("/getUsers", async (req, res) => {
+  const users = await User.find();
+  res.status(200).send(users);
+});
+
 router.post("/register", (req, res) => {
   const { email } = req.body;
 

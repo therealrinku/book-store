@@ -6,11 +6,13 @@ import Backdrop from "../components/Backdrop";
 import axios from "axios";
 import apiUrl from "../apiUrl";
 import LoadingView from "../components/LoadingView";
+import { useRouter } from "next/router";
 
 export default function HomePage() {
   const [showBookForm, setShowBookForm] = useState(false);
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     axios
@@ -49,7 +51,7 @@ export default function HomePage() {
               Add New Book
             </button>
 
-            <button onClick={toggleBookForm} className={styles.homePageButton}>
+            <button onClick={() => router.push("/users")} className={styles.homePageButton}>
               Users List
             </button>
           </section>
