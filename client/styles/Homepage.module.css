@@ -27,18 +27,18 @@
   }
 }
 
-.AddBookButton {
+.homePageButton {
   border: none;
-  background: coral;
+  background: black;
   outline: none;
   color: white;
   padding: 10px 20px;
-  margin-left: 49.5vw;
-  transform: translate(-50%, -50%);
+  margin-left: 10px;
+  margin-bottom: 5px;
 }
 
-.AddBookButton:hover {
-  background: rgb(231, 125, 87);
+.homePageButton:hover {
+  background: rgb(31, 31, 31);
 }
 
 @media (max-width: 700px) {

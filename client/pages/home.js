@@ -44,9 +44,15 @@ export default function HomePage() {
             </>
           ) : null}
 
-          <button onClick={toggleBookForm} className={styles.AddBookButton}>
-            Add New Book
-          </button>
+          <section style={{ textAlign: "center" }}>
+            <button onClick={toggleBookForm} className={styles.homePageButton}>
+              Add New Book
+            </button>
+
+            <button onClick={toggleBookForm} className={styles.homePageButton}>
+              Users List
+            </button>
+          </section>
 
           <section className={styles.books}>
             {books.map((book, i) => {
