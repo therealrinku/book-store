@@ -18,7 +18,7 @@ app.use(express.json());
 const authRoute = require("./routes/auth");
 const bookRoute = require("./routes/book");
 
-app.use("auth", authRoute);
-app.use("book", bookRoute);
+app.use("/auth", authRoute);
+app.use("/book", bookRoute);
 
 module.exports = app;
