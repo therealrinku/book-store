@@ -25,8 +25,12 @@ export default function Users() {
   const toggleAdminStatus = (id, isAdmin) => {
     axios
       .post(apiUrl + `/auth/toggleAdminStatus/${id}`, { isAdmin: !isAdmin })
-      .then((res) => {
-        window.location.reload();
+      .then(() => {
+        //updating locally
+        const usersCopy = [...users];
+        const updatedUserIndex = usersCopy.findIndex((user) => user._id === id);
+        usersCopy[updatedUserIndex].isAdmin = !isAdmin;
+        setUsers(usersCopy);
       })
       .catch((err) => {
         alert(err.message);
