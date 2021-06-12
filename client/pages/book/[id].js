@@ -36,7 +36,7 @@ export default function BookDetails({ bookId }) {
           <section>
             <img src={bookDetails.imageURL} alt="book" />
             <div>
-              <p className={styles.bookTitle}>Think and Grow Rich</p>
+              <p className={styles.bookTitle}>{bookDetails.title}</p>
               <span>
                 <p>Author</p>
                 <p>{bookDetails.author}</p>
