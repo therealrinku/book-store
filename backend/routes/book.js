@@ -8,6 +8,27 @@ router.get("/all", async (req, res) => {
   res.status(200).send(books);
 });
 
+router.post("/updateBook/:id", (req, res) => {
+  const { title, price, author, details, imageURL } = req.body;
+  const publishedDate = Date.parse(req.body.publishedDate);
+
+  Book.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      title,
+      price,
+      author,
+      details,
+      imageURL,
+      publishedDate,
+    },
+    (err) => {
+      if (err) return res.send(400).send(err);
+      res.status(200).send("Successfully updated the book");
+    }
+  );
+});
+
 router.post("/addBook", (req, res) => {
   const { title, price, author, details, imageURL } = req.body;
   const publishedDate = Date.parse(req.body.publishedDate);

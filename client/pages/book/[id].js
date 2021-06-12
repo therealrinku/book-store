@@ -6,10 +6,13 @@ import apiUrl from "../../apiUrl";
 import LoadingView from "../../components/LoadingView";
 import { RiDeleteBin5Line, RiPencilLine } from "react-icons/ri";
 import { useRouter } from "next/router";
+import BookForm from "../../components/BookForm";
+import Backdrop from "../../components/Backdrop";
 
 export default function BookDetails({ bookId }) {
   const [bookDetails, setBookDetails] = useState({});
   const [loading, setLoading] = useState(true);
+  const [showUpdateBox, setShowUpdateBox] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -38,8 +41,16 @@ export default function BookDetails({ bookId }) {
     }
   };
 
+  const toggleEditBox = () => setShowUpdateBox((prev) => !prev);
+
   return (
     <>
+      {showUpdateBox ? (
+        <>
+          <Backdrop toggle={toggleEditBox} />
+          <BookForm editMode={true} bookDetails={bookDetails} toggle={toggleEditBox} />
+        </>
+      ) : null}
       {loading ? (
         <LoadingView />
       ) : bookDetails.title ? (
@@ -70,7 +81,7 @@ export default function BookDetails({ bookId }) {
               <p>{bookDetails.details}</p>
 
               <article>
-                <button>
+                <button onClick={toggleEditBox}>
                   <RiPencilLine />
                   <p>Edit</p>
                 </button>
