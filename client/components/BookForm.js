@@ -3,7 +3,7 @@ import { useState } from "react";
 import apiUrl from "../apiUrl";
 import styles from "../styles/BookForm.module.css";
 
-export default function BookForm({ toggle, editMode, bookDetails }) {
+export default function BookForm({ toggle, editMode, bookDetails, setBooks }) {
   const [title, setTitle] = useState(editMode ? bookDetails.title : "");
   const [author, setAuthor] = useState(editMode ? bookDetails.author : "");
   const [publishedDate, setPublishedDate] = useState(editMode ? bookDetails.publishedDate : "");
@@ -42,9 +42,9 @@ export default function BookForm({ toggle, editMode, bookDetails }) {
         price,
         details,
       })
-      .then(() => {
-        alert("Success");
-        window.location.reload();
+      .then((res) => {
+        toggle();
+        setBooks((prev) => [...prev, { _id: res.data.id, title, author, publishedDate, price, imageURL, details }]);
       })
       .catch((err) => {
         alert("input fields cannot be empty :" + err);

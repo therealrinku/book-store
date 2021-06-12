@@ -36,7 +36,9 @@ router.post("/addBook", (req, res) => {
 
   newBook
     .save()
-    .then(() => res.status(200).send("Successfully added a new book."))
+    .then((data) => {
+      res.status(200).send({ id: data._id });
+    })
     .catch((err) => {
       res.send(400).send(err);
     });
