@@ -6,7 +6,7 @@ import styles from "../styles/BookForm.module.css";
 export default function BookForm({ toggle, editMode, bookDetails, setBooks, setBookDetails }) {
   const [title, setTitle] = useState(editMode ? bookDetails.title : "");
   const [author, setAuthor] = useState(editMode ? bookDetails.author : "");
-  const [publishedYear, setPublishedYear] = useState("");
+  const [publishedYear, setPublishedYear] = useState(editMode ? bookDetails.publishedYear : "");
   const [imageURL, setImageURL] = useState(editMode ? bookDetails.imageURL : "");
   const [price, setPrice] = useState(editMode ? bookDetails.price : "");
   const [details, setDetails] = useState(editMode ? bookDetails.details : "");
@@ -25,7 +25,7 @@ export default function BookForm({ toggle, editMode, bookDetails, setBooks, setB
       .then(() => {
         //updating in local state as well
         toggle();
-        setBookDetails({ title, author, publishedYear, imageURL, price, details });
+        setBookDetails({ _id: bookDetails._id, title, author, publishedYear, imageURL, price, details });
       })
       .catch((err) => {
         alert("input fields cannot be empty :" + err);

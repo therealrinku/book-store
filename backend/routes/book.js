@@ -5,7 +5,6 @@ require("dotenv").config();
 
 router.get("/all", async (req, res) => {
   const books = await Book.find();
-  console.log(books);
   res.status(200).send(books);
 });
 
@@ -23,7 +22,7 @@ router.post("/updateBook/:id", (req, res) => {
       publishedYear,
     },
     (err) => {
-      if (err) return res.send(400).send(err);
+      if (err) return res.status(400).send(err);
       res.status(200).send("Successfully updated the book");
     }
   );
