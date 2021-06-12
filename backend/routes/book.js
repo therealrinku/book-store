@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Book = require("../models/bookModel");
+const ObjectId = require("mongodb").ObjectID;
 require("dotenv").config();
 
 router.get("/all", async (req, res) => {
@@ -20,14 +21,11 @@ router.post("/addBook", (req, res) => {
     });
 });
 
-router.get("/:id", async (req, res) => {
-  const Book = await Book.findOne({ _id: req.params.id });
-
-  if (Book) {
-    res.status(200).send(Book);
-  } else {
-    return res.status(400).send("Book not found");
-  }
+router.get("/:id", (req, res) => {
+  Book.findById(req.params.id, (err, book) => {
+    if (err) return res.status(400).send(err);
+    res.status(200).send(book);
+  });
 });
 
 router.post("/delete/:id", async (req, res) => {
