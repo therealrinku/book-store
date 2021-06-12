@@ -67,7 +67,7 @@ export default function auth() {
       <h2>{loginMode ? "Login to BookStore" : "Create a BookStore account"}</h2>
 
       <form onSubmit={loginMode ? Login : Signup}>
-        <label for="email">Email Address</label>
+        <label htmlFor="email">Email Address</label>
         <input
           type="email"
           id="email"
@@ -76,7 +76,7 @@ export default function auth() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
