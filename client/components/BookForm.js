@@ -1,8 +1,10 @@
+import axios from "axios";
 import { useState } from "react";
+import apiUrl from "../apiUrl";
 import styles from "../styles/BookForm.module.css";
 
 export default function BookForm({ toggle, editMode }) {
-  const [bookTitle, setBookTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishedDate, setPublishedDate] = useState("");
   const [imageURL, setImageURL] = useState("");
@@ -11,6 +13,19 @@ export default function BookForm({ toggle, editMode }) {
 
   const AddBook = (e) => {
     e.preventDefault();
+    axios
+      .post(apiUrl + "/book/addBook", {
+        title,
+        author,
+        publishedDate,
+        imageURL,
+        price,
+        details,
+      })
+      .then((res) => {
+        alert("Success");
+        window.location.reload();
+      });
   };
 
   return (
@@ -19,8 +34,8 @@ export default function BookForm({ toggle, editMode }) {
         <input
           type="text"
           placeholder="Type book title here"
-          value={bookTitle}
-          onChange={(e) => setBookTitle(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <input
           type="text"
