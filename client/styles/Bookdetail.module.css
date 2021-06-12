@@ -38,6 +38,30 @@
   justify-content: space-between;
 }
 
+.bookDetails article button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: black;
+  color: white;
+  padding: 2px 20px;
+  margin-right: 5px;
+}
+
+.bookDetails article button:hover {
+  background-color: rgb(53, 53, 53);
+}
+
+.bookDetails article button p {
+  margin-left: 8px;
+}
+
+.bookDetails article {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+
 @media (max-width: 700px) {
   .bookDetails section {
     flex-direction: column;

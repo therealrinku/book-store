@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import apiUrl from "../../apiUrl";
 import LoadingView from "../../components/LoadingView";
+import { RiDeleteBin5Line, RiPencilLine } from "react-icons/ri";
 
 export default function BookDetails({ bookId }) {
   const [bookDetails, setBookDetails] = useState({});
@@ -20,8 +21,6 @@ export default function BookDetails({ bookId }) {
         setLoading(false);
       });
   }, []);
-
-  // const parsedPublishedDate = new Date(bookDetails.publishedDate);
 
   return (
     <>
@@ -53,6 +52,18 @@ export default function BookDetails({ bookId }) {
               </span>
 
               <p>{bookDetails.details}</p>
+
+              <article>
+                <button>
+                  <RiPencilLine />
+                  <p>Edit</p>
+                </button>
+
+                <button>
+                  <RiDeleteBin5Line />
+                  <p>Delete</p>
+                </button>
+              </article>
             </div>
           </section>
         </div>
