@@ -17,6 +17,7 @@ export default function BookDetails({ bookId }) {
         setBookDetails(res.data);
       })
       .catch((err) => {
+        setLoading(false);
         alert(err.message);
       });
   }, []);
@@ -25,7 +26,7 @@ export default function BookDetails({ bookId }) {
     <>
       {loading ? (
         <LoadingView />
-      ) : (
+      ) : bookDetails.title ? (
         <div className={styles.bookDetails}>
           <GoBackButton />
 
@@ -54,6 +55,11 @@ export default function BookDetails({ bookId }) {
             </div>
           </section>
         </div>
+      ) : (
+        <>
+          <GoBackButton />
+          <p style={{ textAlign: "center" }}>Book not found!</p>
+        </>
       )}
     </>
   );
