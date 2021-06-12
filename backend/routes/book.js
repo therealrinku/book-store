@@ -7,6 +7,19 @@ router.get("/all", async (req, res) => {
   res.status(200).send(books);
 });
 
+router.post("/addBook", (req, res) => {
+  const { title, price, author, details, imageURL } = req.body;
+  const publishedDate = Date.parse(req.body.publishedDate);
+  const newBook = new Book({ title, price, author, details, imageURL, publishedDate });
+
+  newBook
+    .save()
+    .then(() => res.status(200).send("Successfully added a new book."))
+    .catch((err) => {
+      res.send(400).send(err);
+    });
+});
+
 router.get("/:id", async (req, res) => {
   const Book = await Book.findOne({ _id: req.params.id });
 
