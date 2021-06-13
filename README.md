@@ -3,6 +3,7 @@
 INSTRUCTIONS To run on local machine
 
 ### ADMIN USER email:adminuser@gmail.com , password:admin123
+### LIVE DEPLOYED VERSION URL :https://book-store-fcd3b.web.app/
 
 ## For frontend
 
