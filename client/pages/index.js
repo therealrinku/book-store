@@ -8,8 +8,8 @@ export default function LandingPage() {
     <div className={styles.landingPage}>
       <img src="https://bit.ly/3zfmByz" alt="hero-image" />
       <section>
-        <h3>Read Free Books only on book store</h3>
-        <button onClick={() => router.push("/auth")}>Login and get started now</button>
+        <h3>BOOK STORE</h3>
+        <button onClick={() => router.push("/auth")}>Login to get access</button>
       </section>
     </div>
   );
