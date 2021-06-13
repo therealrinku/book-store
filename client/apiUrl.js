@@ -1,3 +1,3 @@
-const apiUrl = "http://localhost:4000";
+const apiUrl = "https://bookstore1api.herokuapp.com";
 
 export default apiUrl;
