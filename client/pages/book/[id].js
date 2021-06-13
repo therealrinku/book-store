@@ -11,7 +11,7 @@ import Backdrop from "../../components/Backdrop";
 import UserContext from "../../UserContext";
 import Navbar from "../../components/Navbar";
 
-export default function BookDetails({ bookId }) {
+export default function BookDetails() {
   const [bookDetails, setBookDetails] = useState({});
   const [loading, setLoading] = useState(true);
   const [showUpdateBox, setShowUpdateBox] = useState(false);
@@ -21,7 +21,7 @@ export default function BookDetails({ bookId }) {
 
   useEffect(() => {
     axios
-      .get(apiUrl + `/book/${bookId}`, {
+      .get(apiUrl + `/book/${router.query.id}`, {
         headers: {
           Authorization: "Bearer " + accessToken,
         },
@@ -39,7 +39,7 @@ export default function BookDetails({ bookId }) {
     const deleteBook = confirm("Do you want to delete this book?");
     if (deleteBook) {
       axios
-        .post(apiUrl + `/book/delete/${bookId}`)
+        .post(apiUrl + `/book/delete/${router.query.id}`)
         .then((res) => {
           router.back();
         })
@@ -113,12 +113,4 @@ export default function BookDetails({ bookId }) {
       )}
     </>
   );
-}
-
-export async function getServerSideProps(context) {
-  return {
-    props: {
-      bookId: context.params.id,
-    },
-  };
 }
