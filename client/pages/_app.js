@@ -6,6 +6,7 @@ import { useState } from "react";
 function MyApp({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <>
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps }) {
         <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
       </Head>
 
-      <UserContext.Provider value={{ accessToken, setAccessToken, userEmail, setUserEmail }}>
+      <UserContext.Provider value={{ accessToken, setAccessToken, userEmail, setUserEmail, isAdmin, setIsAdmin }}>
         <Component {...pageProps} />
       </UserContext.Provider>
     </>

@@ -5,6 +5,8 @@ const UserContext = React.createContext({
   setAccessToken: () => {},
   userEmail: "",
   setUserEmail: () => {},
+  isAdmin: false,
+  setIsAdmin: () => {},
 });
 
 export default UserContext;
