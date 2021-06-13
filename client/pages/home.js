@@ -1,18 +1,21 @@
 import styles from "../styles/Homepage.module.css";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import BookForm from "../components/BookForm";
 import Backdrop from "../components/Backdrop";
 import axios from "axios";
 import apiUrl from "../apiUrl";
 import LoadingView from "../components/LoadingView";
 import { useRouter } from "next/router";
+import UserContext from "../UserContext";
 
 export default function HomePage() {
   const [showBookForm, setShowBookForm] = useState(false);
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+
+  const { isAdmin } = useContext(UserContext);
 
   useEffect(() => {
     axios
@@ -48,15 +51,17 @@ export default function HomePage() {
             </>
           ) : null}
 
-          <section style={{ textAlign: "center" }}>
-            <button onClick={toggleBookForm} className={styles.homePageButton}>
-              Add New Book
-            </button>
+          {isAdmin ? (
+            <section style={{ textAlign: "center" }}>
+              <button onClick={toggleBookForm} className={styles.homePageButton}>
+                Add New Book
+              </button>
 
-            <button onClick={() => router.push("/users")} className={styles.homePageButton}>
-              Users List
-            </button>
-          </section>
+              <button onClick={() => router.push("/users")} className={styles.homePageButton}>
+                Users List
+              </button>
+            </section>
+          ) : null}
 
           <section className={styles.books}>
             {books.map((book, i) => {

@@ -1,6 +1,6 @@
 import GoBackButton from "../../components/GoBackButton";
 import styles from "../../styles/Bookdetail.module.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import apiUrl from "../../apiUrl";
 import LoadingView from "../../components/LoadingView";
@@ -8,12 +8,15 @@ import { RiDeleteBin5Line, RiPencilLine } from "react-icons/ri";
 import { useRouter } from "next/router";
 import BookForm from "../../components/BookForm";
 import Backdrop from "../../components/Backdrop";
+import UserContext from "../../UserContext";
 
 export default function BookDetails({ bookId }) {
   const [bookDetails, setBookDetails] = useState({});
   const [loading, setLoading] = useState(true);
   const [showUpdateBox, setShowUpdateBox] = useState(false);
   const router = useRouter();
+
+  const { isAdmin } = useContext(UserContext);
 
   useEffect(() => {
     axios
@@ -80,17 +83,19 @@ export default function BookDetails({ bookId }) {
 
               <p>{bookDetails.details}</p>
 
-              <article>
-                <button onClick={toggleEditBox}>
-                  <RiPencilLine />
-                  <p>Edit</p>
-                </button>
+              {isAdmin ? (
+                <article>
+                  <button onClick={toggleEditBox}>
+                    <RiPencilLine />
+                    <p>Edit</p>
+                  </button>
 
-                <button onClick={DeleteBook}>
-                  <RiDeleteBin5Line />
-                  <p>Delete</p>
-                </button>
-              </article>
+                  <button onClick={DeleteBook}>
+                    <RiDeleteBin5Line />
+                    <p>Delete</p>
+                  </button>
+                </article>
+              ) : null}
             </div>
           </section>
         </div>
