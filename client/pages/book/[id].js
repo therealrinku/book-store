@@ -16,11 +16,15 @@ export default function BookDetails({ bookId }) {
   const [showUpdateBox, setShowUpdateBox] = useState(false);
   const router = useRouter();
 
-  const { isAdmin } = useContext(UserContext);
+  const { isAdmin, accessToken } = useContext(UserContext);
 
   useEffect(() => {
     axios
-      .get(apiUrl + `/book/${bookId}`)
+      .get(apiUrl + `/book/${bookId}`, {
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
+      })
       .then((res) => {
         setLoading(false);
         setBookDetails(res.data);

@@ -10,12 +10,16 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { userEmail, isAdmin } = useContext(UserContext);
+  const { userEmail, isAdmin, accessToken } = useContext(UserContext);
 
   useEffect(() => {
     if (isAdmin) {
       axios
-        .get(apiUrl + "/auth/getUsers")
+        .get(apiUrl + "/auth/getUsers", {
+          headers: {
+            Authorization: "Bearer " + accessToken,
+          },
+        })
         .then((res) => {
           console.log(res.data);
           setLoading(false);

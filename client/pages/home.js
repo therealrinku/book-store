@@ -15,11 +15,15 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  const { isAdmin } = useContext(UserContext);
+  const { isAdmin, accessToken } = useContext(UserContext);
 
   useEffect(() => {
     axios
-      .get(apiUrl + "/book/all")
+      .get(apiUrl + "/book/all", {
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
+      })
       .then((res) => {
         setLoading(false);
         setBooks(res.data);
