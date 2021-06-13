@@ -34,7 +34,15 @@ export default function Users() {
 
   const toggleAdminStatus = (id, isAdmin) => {
     axios
-      .post(apiUrl + `/auth/toggleAdminStatus/${id}`, { isAdmin: !isAdmin })
+      .post(
+        apiUrl + `/auth/toggleAdminStatus/${id}`,
+        { isAdmin: !isAdmin },
+        {
+          headers: {
+            Authorization: "Bearer " + accessToken,
+          },
+        }
+      )
       .then(() => {
         //updating locally
         const usersCopy = [...users];

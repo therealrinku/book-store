@@ -2,16 +2,17 @@ const router = require("express").Router();
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const TokenVerifier = require("../tokenVerifier");
 require("dotenv").config();
 
-router.post("/toggleAdminStatus/:id", (req, res) => {
+router.post("/toggleAdminStatus/:id", TokenVerifier, (req, res) => {
   User.findByIdAndUpdate(req.params.id, { $set: { isAdmin: req.body.isAdmin } }, (err) => {
     if (err) return res.send(400).send(err);
     res.status(200).send("Successfully updated the user");
   });
 });
 
-router.get("/getUsers", async (req, res) => {
+router.get("/getUsers", TokenVerifier, async (req, res) => {
   const users = await User.find();
   res.status(200).send(users);
 });

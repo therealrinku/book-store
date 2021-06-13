@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import apiUrl from "../apiUrl";
 import styles from "../styles/BookForm.module.css";
+import UserContext from "../UserContext";
 
 export default function BookForm({ toggle, editMode, bookDetails, setBooks, setBookDetails }) {
   const [title, setTitle] = useState(editMode ? bookDetails.title : "");
@@ -11,17 +12,27 @@ export default function BookForm({ toggle, editMode, bookDetails, setBooks, setB
   const [price, setPrice] = useState(editMode ? bookDetails.price : "");
   const [details, setDetails] = useState(editMode ? bookDetails.details : "");
 
+  const { accessToken } = useContext(UserContext);
+
   const EditBook = (e) => {
     e.preventDefault();
     axios
-      .post(apiUrl + `/book/updateBook/${bookDetails._id}`, {
-        title,
-        author,
-        publishedYear,
-        imageURL,
-        price,
-        details,
-      })
+      .post(
+        apiUrl + `/book/updateBook/${bookDetails._id}`,
+        {
+          title,
+          author,
+          publishedYear,
+          imageURL,
+          price,
+          details,
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + accessToken,
+          },
+        }
+      )
       .then(() => {
         //updating in local state as well
         toggle();
@@ -35,14 +46,22 @@ export default function BookForm({ toggle, editMode, bookDetails, setBooks, setB
   const AddBook = (e) => {
     e.preventDefault();
     axios
-      .post(apiUrl + "/book/addBook", {
-        title,
-        author,
-        publishedYear,
-        imageURL,
-        price,
-        details,
-      })
+      .post(
+        apiUrl + "/book/addBook",
+        {
+          title,
+          author,
+          publishedYear,
+          imageURL,
+          price,
+          details,
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + accessToken,
+          },
+        }
+      )
       .then((res) => {
         toggle();
         //adding book to local state
