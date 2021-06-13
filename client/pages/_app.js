@@ -1,7 +1,12 @@
 import "../styles/globals.css";
 import Head from "next/head";
+import UserContext from "../UserContext";
+import { useState } from "react";
 
 function MyApp({ Component, pageProps }) {
+  const [accessToken, setAccessToken] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+
   return (
     <>
       <Head>
@@ -11,7 +16,10 @@ function MyApp({ Component, pageProps }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
       </Head>
-      <Component {...pageProps} />
+
+      <UserContext.Provider value={{ accessToken, setAccessToken, userEmail, setUserEmail }}>
+        <Component {...pageProps} />
+      </UserContext.Provider>
     </>
   );
 }
