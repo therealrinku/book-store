@@ -2,7 +2,7 @@
 
 INSTRUCTIONS To run on local machine
 
-# ADMIN USER email:adminuser@gmail.com , password:admin123
+### ADMIN USER email:adminuser@gmail.com , password:admin123
 
 ## For frontend
 
