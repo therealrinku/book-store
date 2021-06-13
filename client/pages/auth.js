@@ -2,9 +2,10 @@ import styles from "../styles/Authpage.module.css";
 import Link from "next/link";
 import { VscNote } from "react-icons/vsc";
 import { FiArrowRight } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import apiUrl from "../apiUrl";
+import UserContext from "../UserContext";
 
 export default function auth() {
   const [loginMode, setLoginMode] = useState(true);
@@ -14,6 +15,8 @@ export default function auth() {
   //form handlers;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setUserEmail, setAccessToken, setIsAdmin } = useContext(UserContext);
 
   const Signup = (e) => {
     e.preventDefault();
@@ -43,8 +46,9 @@ export default function auth() {
     axios
       .post(apiUrl + "/auth/login", { email, password })
       .then((res) => {
-        console.log(res.data);
-        //storing access token and email in state
+        setAccessToken(res.data.token);
+        setUserEmail(res.data.email);
+        setIsAdmin(res.data.isAdmin);
       })
       .catch((err) => {
         alert(err.message);
@@ -71,7 +75,7 @@ export default function auth() {
         <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <label htmlFor="password">Password</label>
         <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button disable={serverIsBusy}>
+        <button disabled={serverIsBusy}>
           <p>{loginMode ? "Login" : "Sign Up"}</p>
           <FiArrowRight />
         </button>
