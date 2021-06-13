@@ -68,23 +68,9 @@ export default function auth() {
 
       <form onSubmit={loginMode ? Login : Signup}>
         <label htmlFor="email">Email Address</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="something@gmail.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="***"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button disable={serverIsBusy}>
           <p>{loginMode ? "Login" : "Sign Up"}</p>
           <FiArrowRight />
