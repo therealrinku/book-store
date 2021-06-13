@@ -30,7 +30,7 @@
 
 @media (max-width: 700px) {
   .landingPage {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .landingPage img,
