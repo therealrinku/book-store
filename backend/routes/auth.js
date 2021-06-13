@@ -38,14 +38,14 @@ router.post("/login", async (req, res) => {
 
   if (!userObject) return res.status(400).send("invalid email");
 
-  const { email, password } = userObject;
+  const { email, password, isAdmin } = userObject;
   //decrypting and comparing the passwords
   bcrypt.compare(req.body.password, password, (err, matched) => {
     if (err) return res.status(400).send(err);
     if (!matched) return res.status(400).send("invalid password");
 
     const token = jwt.sign({ email }, process.env.ACCESS_TOKEN_SECRET);
-    return res.status(200).send({ token, email });
+    return res.status(200).send({ token, email, isAdmin });
   });
 });
 
