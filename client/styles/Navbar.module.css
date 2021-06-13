@@ -1,0 +1,23 @@
+.Navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+}
+
+.Navbar legend {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: solid 1px black;
+}
+
+.Navbar button {
+  border: none;
+  outline: none;
+  background: inherit;
+}

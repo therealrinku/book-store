@@ -6,12 +6,14 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import apiUrl from "../apiUrl";
 import UserContext from "../UserContext";
+import { useRouter } from "next/router";
 
 export default function auth() {
   const [loginMode, setLoginMode] = useState(true);
 
   const [serverIsBusy, setServerIsBusy] = useState(false);
 
+  const router = useRouter();
   //form handlers;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,6 +48,7 @@ export default function auth() {
     axios
       .post(apiUrl + "/auth/login", { email, password })
       .then((res) => {
+        router.push("/");
         setAccessToken(res.data.token);
         setUserEmail(res.data.email);
         setIsAdmin(res.data.isAdmin);

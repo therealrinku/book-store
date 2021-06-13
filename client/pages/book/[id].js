@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import BookForm from "../../components/BookForm";
 import Backdrop from "../../components/Backdrop";
 import UserContext from "../../UserContext";
+import Navbar from "../../components/Navbar";
 
 export default function BookDetails({ bookId }) {
   const [bookDetails, setBookDetails] = useState({});
@@ -62,6 +63,7 @@ export default function BookDetails({ bookId }) {
         <LoadingView />
       ) : bookDetails.title ? (
         <div className={styles.bookDetails}>
+          <Navbar />
           <GoBackButton />
 
           <p style={{ textAlign: "center", fontSize: "25px" }}>Book Details</p>

@@ -5,6 +5,7 @@ import apiUrl from "../apiUrl";
 import LoadingView from "../components/LoadingView";
 import GoBackButton from "../components/GoBackButton";
 import UserContext from "../UserContext";
+import Navbar from "../components/Navbar";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
@@ -28,7 +29,7 @@ export default function Users() {
         .catch((err) => {
           alert(err.message);
         });
-    }
+    } else setLoading(false);
   }, []);
 
   const toggleAdminStatus = (id, isAdmin) => {
@@ -52,6 +53,7 @@ export default function Users() {
         <LoadingView />
       ) : isAdmin ? (
         <div className={styles.usersPage}>
+          <Navbar />
           <GoBackButton />
           <p style={{ textAlign: "center", marginBottom: "30px", fontSize: "25px" }}>Users List</p>
           {users.map((user) => {

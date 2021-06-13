@@ -8,6 +8,7 @@ import apiUrl from "../apiUrl";
 import LoadingView from "../components/LoadingView";
 import { useRouter } from "next/router";
 import UserContext from "../UserContext";
+import Navbar from "../components/Navbar";
 
 export default function HomePage() {
   const [showBookForm, setShowBookForm] = useState(false);
@@ -44,6 +45,8 @@ export default function HomePage() {
         <LoadingView />
       ) : (
         <div className={styles.homepage}>
+          <Navbar />
+
           <p style={{ textAlign: "center", fontSize: "25px" }}>
             {books.length === 0 ? "No any Books Added Yet" : "All Books"}
           </p>

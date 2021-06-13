@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function MyApp({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState("");
-  const [userEmail, setUserEmail] = useState("adminuse@gmail.com");
+  const [userEmail, setUserEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
 
   return (

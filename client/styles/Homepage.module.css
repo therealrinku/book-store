@@ -1,9 +1,13 @@
+.homepage {
+  margin-top: 60px;
+}
+
 .books {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 95%;
   margin: auto;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .books div {

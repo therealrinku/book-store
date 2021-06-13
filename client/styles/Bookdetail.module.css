@@ -1,3 +1,7 @@
+.bookDetails {
+  margin-top: 50px;
+}
+
 .bookDetails section {
   display: flex;
   align-items: flex-start;
