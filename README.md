@@ -2,6 +2,8 @@
 
 INSTRUCTIONS To run on local machine
 
+# ADMIN USER email:adminuser@gmail.com , password:admin123
+
 ## For frontend
 
 Step 1:Go to client folder and run npm install
