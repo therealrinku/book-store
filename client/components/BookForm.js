@@ -57,42 +57,18 @@ export default function BookForm({ toggle, editMode, bookDetails, setBooks, setB
     <div className={styles.BookForm}>
       <p style={{ textAlign: "center" }}>{editMode ? "Edit Book" : "Add New Book"}</p>
       <form onSubmit={editMode ? EditBook : AddBook}>
-        <input
-          type="text"
-          placeholder="Type book title here"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Type book author here"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Type book published date here"
-          value={publishedYear}
-          onChange={(e) => setPublishedYear(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Type book details here"
-          value={details}
-          onChange={(e) => setDetails(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Type book image url here"
-          value={imageURL}
-          onChange={(e) => setImageURL(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Type book price here"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
+        <label htmlFor="title">Title</label>
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <label htmlFor="author">Author</label>
+        <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
+        <label htmlFor="year">Published Year</label>
+        <input type="number" value={publishedYear} onChange={(e) => setPublishedYear(e.target.value)} />
+        <label htmlFor="details">Book Details</label>
+        <input type="text" value={details} onChange={(e) => setDetails(e.target.value)} />
+        <label htmlFor="image">Image URL</label>
+        <input type="text" value={imageURL} onChange={(e) => setImageURL(e.target.value)} />
+        <label htmlFor="price">Price</label>
+        <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
         <button>Submit</button>
         <button onClick={toggle} type="button">
           Cancel
