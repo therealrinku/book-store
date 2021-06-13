@@ -39,11 +39,15 @@ export default function BookDetails() {
     const deleteBook = confirm("Do you want to delete this book?");
     if (deleteBook) {
       axios
-        .post(apiUrl + `/book/delete/${router.query.id}`, {
-          headers: {
-            Authorization: "Bearer " + accessToken,
-          },
-        })
+        .post(
+          apiUrl + `/book/delete/${router.query.id}`,
+          {},
+          {
+            headers: {
+              Authorization: "Bearer " + accessToken,
+            },
+          }
+        )
         .then((res) => {
           router.back();
         })
